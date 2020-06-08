@@ -3,9 +3,8 @@
 //  Synthesis program to get starting point & set trajectory
 //
 //  Kelby Webster & Thomas Knepshield
-//  6/4/20
+//  6/7/20
 //
-//TODO: counter, display last state
 
 
 #include <stdio.h>
@@ -19,7 +18,6 @@
 void displayMenu(void);
 double distance(int x, int y);
 void pick(int x, int y);
-void probability(float prob, int x, int y);
 
 int main() {
     
@@ -33,7 +31,7 @@ int main() {
     // Get user input for option
     scanf("%d", &option);
         if(option == 1) {
-            srand((unsigned)time(0));// Generating the seed
+            srand((unsigned)time(0)); // Generating the seed
             // creates random coordinate values from range of (0,0) to (1023,1023)
             x = rand() % 1023;
             y = rand() % 1023;
@@ -68,50 +66,7 @@ int main() {
 
     double distance(int x, int y) {
         return (sqrt((pow(x, 2)) + (pow(y, 2))));
-        
     }
-
- //I dont think we need this but I left it here just in case
-void probability(float prob, int x, int y) {
-        
-        int cases[2];
-        if (prob <= 0.5500) {
-            cases[0] = x - 1;
-            cases[1] = y - 1;
-        } else if (prob > 0.5500000 && prob <= 0.6000000) {
-            cases[0] = x;
-            cases[1] = y - 1;
-        } else if (prob > 0.6000000 && prob <= 0.6500000) {
-            cases[0] = x + 1;
-            cases[1] = y - 1;
-        } else if (prob > 0.6500000 && prob <= 0.7000000) {
-            cases[0] = x - 1;
-            cases[1] = y;
-        } else if (prob > 0.7000000 && prob <= 0.7500000) {
-            cases[0] = x;
-            cases[1] = y;
-        } else if (prob > 0.7500000 && prob <= 0.8000000) {
-            cases[0] = x + 1;
-            cases[1] = y;
-        } else if (prob > 0.8000000 && prob <= 0.8500000) {
-            cases[0] = x - 1;
-            cases[1] = y + 1;
-        } else if (prob > 0.8500000 && prob <= 0.9000000) {
-            cases[0] = x;
-            cases[0] = y + 1;
-        } else if (prob > 0.9000000 && prob <= 0.9500000) {
-            cases[0] = x + 1;
-            cases[1] = y + 1;
-        } else {
-            printf("Invisible\n");
-            cases[0] = x;
-            cases[1] = y;
-        }
-
-        printf("(%d,", cases[0]);
-        printf(" %d)\n", cases[1]);
-    }
-
     
 
 
@@ -119,10 +74,9 @@ void probability(float prob, int x, int y) {
 
     //int go = 0; signals to stop when coordinates reach out of range
         while (x != 0 && y != 0) { //Replaced with time later if needed
-        //I removed go because I think this would work better
 
         // creates random probability
-        float prob = (float)rand() / (float)RAND_MAX; //I think he wanted it to be floating point values
+        float prob = (float)rand() / (float)RAND_MAX;
         printf("Probability is: %f\n", prob);
 
             double cases[9];
@@ -544,10 +498,9 @@ void probability(float prob, int x, int y) {
               }
                     break;
 
-            } // switch
+            } 
               
-
-        } // while
+        }
     }
     
 
@@ -560,5 +513,3 @@ void probability(float prob, int x, int y) {
         printf("      3. Exit program \n");
         printf("  ***************************************************************\n");
     }
-
-
