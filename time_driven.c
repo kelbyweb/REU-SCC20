@@ -5,6 +5,7 @@
 //  Kelby Webster & Thomas Knepshield
 //  6/7/20
 //
+//TODO: counter
 
 
 #include <stdio.h>
@@ -25,9 +26,12 @@ int main() {
     bool stop = false;
     int option;
     int x, y;
+    char runAgain = 'Y';
     
-    while(!stop){
+    // initial menu display
     displayMenu();
+    
+    do {
     // Get user input for option
     scanf("%d", &option);
         if(option == 1) {
@@ -38,28 +42,42 @@ int main() {
             printf("Option chosen: Randomly generated values\n");
             printf("Coordinates are: (%d, %d)\n", x, y);
             pick(x, y);
-            break;
-        }
-        else if (option == 2) {
-            printf("Option chosen: User generated values\n");
-            printf("Enter the initial status/starting point: \n");
-            printf("X value: ");
-            scanf("%d", &x);
-            printf("Y value: ");
-            scanf("%d", &y);
-            printf("Chosen coordinates are: (%d, %d)\n", x, y);
-            pick(x, y);
-            break;
-        }
-        else if (option == 3) {
-            printf("Exiting program...\n");
-            exit(0);
-        }
-        else if (option != 1 && option != 2 && option != 3)
-        {
-            printf("Invalid input... please try again.");
-        }
-     }
+
+           }
+           else if (option == 2) {
+               printf("Option chosen: User generated values\n");
+               printf("Enter the initial status/starting point: \n");
+               printf("X value: ");
+               scanf("%d", &x);
+               printf("Y value: ");
+               scanf("%d", &y);
+               printf("Chosen coordinates are: (%d, %d)\n", x, y);
+               pick(x, y);
+           }
+           else if (option == 3) {
+               printf("   Exiting program...\n");
+               exit(0);
+           }
+           else if (option != 1 && option != 2 && option != 3)
+           {
+               printf("Invalid input... please try again.\n");
+           }
+        
+        // ask user to run again
+        printf("  Would you like to run the program again? \n  (Enter Y for yes or N for no):\n");
+        scanf("%c", &runAgain);
+        switch(runAgain) {
+            case 'Y':
+            case 'y':
+                displayMenu();
+                break;
+            case 'N':
+            case 'n':
+                stop = true;
+                printf("  Exiting program...\n");
+                exit(0);
+                }
+    } while(stop == false);
         
         return 0;
 }
@@ -500,7 +518,7 @@ int main() {
 
             } 
               
-        }
+        } 
     }
     
 
@@ -513,3 +531,4 @@ int main() {
         printf("      3. Exit program \n");
         printf("  ***************************************************************\n");
     }
+
