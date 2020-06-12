@@ -3,7 +3,7 @@
 //  golomb.c
 //
 //  by Kelby Webster
-//  6/11/20
+//  6/12/20
 //
 //
 
@@ -92,14 +92,16 @@ void printGolomb(int n)
   
     // base cases
     dp[1] = 1;
-    // printf("%d ",dp[1]);
   
     // Finding and printing first
     // n terms of Golomb Sequence.
+    // 1/2^n
     for (int i = 2; i <= n; i++)
     {
-        dp[i] = 1 + dp[i - dp[dp[i - 1]]];
-       // printf("%d ",dp[i]);
+//        dp[i] = 1 + dp[i - dp[dp[i - 1]]];
+        dp[i] = dp[i] + (1 << dp[i]);
+        dp[i] = 1/dp[i];
+
     }
 }
 
