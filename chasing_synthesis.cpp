@@ -3,7 +3,7 @@
 //  Generates circling data & store the output generated into a csv file
 //
 //  Kelby Webster
-//  6/26/20
+//  6/29/20
 //
 
 #include <stdio.h>
