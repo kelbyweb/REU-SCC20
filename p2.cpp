@@ -1,7 +1,7 @@
 //
 //  p2.cpp
 //  Second prototype
-//  80-10-5-0 distribution
+//  80-10-5-5 distribution
 //  Generates coordinate data & stores the output into a csv file
 //
 //  Kelby Webster
