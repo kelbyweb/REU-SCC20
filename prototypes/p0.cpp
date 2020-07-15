@@ -1,17 +1,14 @@
 //
 //  p0.cpp
-//  Initial "best-case" prototype
+//  Initial, "best-case" prototype
 //  100-0 distribution: "police chase"
 //  Generates coordinate data & stores the output into a csv file
 //
 //  Kelby Webster
-//  7/14/20
+//  7/15/20
 //
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <iostream>
-#include <ctime>
 #include <fstream>
 
 using namespace std;
@@ -36,7 +33,6 @@ void pick(int x, int y) {
        srand((unsigned)time(0)); // generating the seed
        // creates random coordinate from range (0,0) to (4096, 4096)
        double r;
-       cout << "Initial coordinates: (" << x << "," << y << ")" << endl;
        
        // starting loop on "tick"
        for(int i = 0; i <= 10000; i++ )
@@ -51,13 +47,31 @@ void pick(int x, int y) {
                 exit(0);
             }
            
-          // B region top
-          if ((1536 <= x) & (x <= 2560) & (2305 <= y) & (y <= 2560)) {
+          // B region top center
+          if ((1792 <= x) & (x <= 2304) & (2305 <= y) & (y <= 2560)) {
              if ((0 < r) & (r <= 0.999)) {
                    y = y - 1;
                    cout << "(" << x << ", " << y << ")" << endl;
                    }
               }
+           
+           // B region top left corner
+           if ((1536 <= x) & (x <= 1791) & (2305 <= y) & (y <= 2560)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x + 1;
+                     y = y - 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // B region top right corner
+           if ((2305 <= x) & (x <= 2560) & (2305 <= y) & (y <= 2560)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x - 1;
+                     y = y - 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
            
           // B region left
           if ((1536 <= x) & (x <= 1791) & (1792 <= y) & (y <= 2304)) {
@@ -75,21 +89,57 @@ void pick(int x, int y) {
                     }
              }
            
-          // B region bottom
-          if ((1536 <= x) & (x <= 2560) & (1536 <= y) & (y <= 1791)) {
+          // B region bottom center
+          if ((1792 <= x) & (x <= 2304) & (1536 <= y) & (y <= 1791)) {
              if ((0 < r) & (r <= 0.999)) {
                     y = y + 1;
                     cout << "(" << x << ", " << y << ")" << endl;
                     }
              }
+           
+           // B region bottom left corner
+           if ((1536 <= x) & (x <= 1791) & (1536 <= y) & (y <= 1791)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x + 1;
+                     y = y + 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // B region bottom right corner
+           if ((2305 <= x) & (x <= 2560) & (1536 <= y) & (y <= 1791)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x - 1;
+                     y = y + 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
                     
-          // C region top
-          if ((1024 <= x) & (x <= 3072) & (2561 <= y) & (y <= 3072)) {
+          // C region top center
+          if ((1536 <= x) & (x <= 2560) & (2561 <= y) & (y <= 3072)) {
              if ((0 < r) & (r <= 0.999)) {
                     y = y - 1;
                     cout << "(" << x << ", " << y << ")" << endl;
                     }
               }
+           
+           // C region top left corner
+           if ((1024 <= x) & (x <= 1535) & (2561 <= y) & (y <= 3072)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x + 1;
+                     y = y - 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // C region top right corner
+           if ((2561 <= x) & (x <= 3072) & (2561 <= y) & (y <= 3072)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x - 1;
+                     y = y - 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
            
           // C region left
           if ((1024 <= x) & (x <= 1535) & (1536 <= y) & (y <= 2560)) {
@@ -107,21 +157,57 @@ void pick(int x, int y) {
                     }
               }
            
-          // C region bottom
-          if ((1024 <= x) & (x <= 3072) & (1024 <= y) & (y <= 1535)) {
+          // C region bottom center
+          if ((1536 <= x) & (x <= 2560) & (1024 <= y) & (y <= 1535)) {
              if ((0 < r) & (r <= 0.999)) {
                     y = y + 1;
                     cout << "(" << x << ", " << y << ")" << endl;
                     }
               }
            
-          // D region top
-          if ((0 <= x) & (x <= 4096) & (3073 <= y) & (y <= 4096)) {
+           // C region bottom left corner
+           if ((1024 <= x) & (x <= 1535) & (1024 <= y) & (y <= 1535)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x + 1;
+                     y = y + 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // C region bottom right corner
+           if ((2561 <= x) & (x <= 3072) & (1024 <= y) & (y <= 1535)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x - 1;
+                     y = y + 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+          // D region top center
+          if ((1024 <= x) & (x <= 3072) & (3073 <= y) & (y <= 4096)) {
              if ((0 < r) & (r <= 0.999)) {
                     y = y - 1;
                     cout << "(" << x << ", " << y << ")" << endl;
                     }
               }
+           
+           // D region top left corner
+           if ((0 <= x) & (x <= 1023) & (3073 <= y) & (y <= 4096)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x + 1;
+                     y = y - 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // D region top right corner
+           if ((3073 <= x) & (x <= 4096) & (3073 <= y) & (y <= 4096)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x - 1;
+                     y = y - 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
            
           // D region left
           if ((0 <= x) & (x <= 1023) & (0 <= y) & (y <= 3072)) {
@@ -139,16 +225,34 @@ void pick(int x, int y) {
                     }
               }
            
-          // D region bottom
-          if ((0 <= x) & (x <= 4096) & (0 <= y) & (y <= 1023)) {
+          // D region bottom center
+          if ((1024 <= x) & (x <= 3072) & (0 <= y) & (y <= 1023)) {
              if ((0 < r) & (r <= 0.999)) {
                     y = y + 1;
                     cout << "(" << x << ", " << y << ")" << endl;
                     }
               }
            
-          // reaching out of bounds/negative values
-          if ((x < 0) || (x > 4096) || (y < 0) || (y > 4096)) {
+           // D region bottom left corner
+           if ((0 <= x) & (x <= 1023) & (0 <= y) & (y <= 1023)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x + 1;
+                     y = y + 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // D region bottom right corner
+           if ((3073 <= x) & (x <= 4096) & (0 <= y) & (y <= 1023)) {
+              if ((0 < r) & (r <= 0.999)) {
+                     x = x - 1;
+                     y = y + 1;
+                     cout << "(" << x << ", " << y << ")" << endl;
+                     }
+               }
+           
+           // reaching out of bounds/negative values
+           if ((x < 0) || (x > 4096) || (y < 0) || (y > 4096)) {
               cout << "Out of bounds. Ending program..." << endl;
               exit(0); // end on last viable coordinate
               }
@@ -178,17 +282,17 @@ int main()
                 x = rand() % 4096;
                 y = rand() % 4096;
                 cout << "Option chosen: Randomly generated values" << endl;
-                cout << "Coordinates are: (" << x << ", " << y << ")" << endl;
+                cout << "Initial coordinates are: (" << x << ", " << y << ")" << endl;
                 pick(x, y);
                }
                else if (option == 2) {
                    cout << "Option chosen: User generated values" << endl;
-                   cout <<"Enter the initial status/starting point:" << endl;
+                   cout << "Enter the initial status/starting point:" << endl;
                    cout << "X value: ";
                    cin >> x;
                    cout << "Y value: ";
                    cin >> y;
-                   cout <<"\nChosen coordinates are: (" << x << ", " << y << ")" << endl;
+                   cout << "Initial coordinates are: (" << x << ", " << y << ")" << endl;
                    pick(x, y);
                }
                else if (option == 3) {
