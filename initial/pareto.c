@@ -1,5 +1,5 @@
 //
-//  Symthesizing data using Pareto distribution
+//  Synthesizing data using Pareto distribution
 //  pareto.c
 //
 //  by Kelby Webster
